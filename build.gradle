@@ -2,8 +2,14 @@ buildscript {
     repositories {
         apply from: 'dependencies.gradle'
         google()
-        jcenter()
-
+        mavenCentral()
+        maven { url 'https://jitpack.io' }
+        maven { url = uri("https://maven.aliyun.com/repository/gradle-plugin") }
+        maven { url = uri("https://maven.aliyun.com/repository/spring-plugin") }
+        maven { url = uri("https://maven.aliyun.com/repository/public") }
+        maven { url = uri("https://maven.aliyun.com/repository/google") }
+        maven { url = uri("https://jitpack.io") }
+        maven { setUrl("https://jitpack.io") }
     }
     dependencies {
         classpath "com.android.tools.build:gradle:$versions.gradlePluginVersion"
@@ -14,8 +20,14 @@ buildscript {
 allprojects {
     repositories {
         google()
-        jcenter()
-
+        mavenCentral()
+        maven { url 'https://jitpack.io' }
+        maven { url = uri("https://maven.aliyun.com/repository/gradle-plugin") }
+        maven { url = uri("https://maven.aliyun.com/repository/spring-plugin") }
+        maven { url = uri("https://maven.aliyun.com/repository/public") }
+        maven { url = uri("https://maven.aliyun.com/repository/google") }
+        maven { url = uri("https://jitpack.io") }
+        maven { setUrl("https://jitpack.io") }
     }
 }
 

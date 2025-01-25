@@ -1,4 +1,5 @@
 apply plugin: 'kotlin'
+apply plugin: 'com.android.lint'
 
 dependencies {
     compileOnly "org.jetbrains.kotlin:kotlin-stdlib:$versions.kotlin"
@@ -8,6 +9,14 @@ dependencies {
     testImplementation "com.android.tools.lint:lint-tests:$versions.lint"
     testImplementation "junit:junit:4.12"
     testImplementation "org.assertj:assertj-core:3.9.0"
+}
+
+lintOptions {
+    htmlReport = true
+    htmlOutput = file("lint-report.html")
+    textReport = true
+    absolutePaths = false
+    ignoreTestSources = true
 }
 
 jar {
