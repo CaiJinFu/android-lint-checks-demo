@@ -1,26 +1,31 @@
 apply plugin: 'kotlin'
 apply plugin: 'com.android.lint'
+apply plugin: 'kotlin-kapt'
 
 dependencies {
-    compileOnly "org.jetbrains.kotlin:kotlin-stdlib:$versions.kotlin"
-    compileOnly "com.android.tools.lint:lint-api:$versions.lint"
-    compileOnly "com.android.tools.lint:lint-checks:$versions.lint"
+  compileOnly "org.jetbrains.kotlin:kotlin-stdlib:$versions.kotlin"
+  compileOnly "com.android.tools.lint:lint-api:$versions.lint"
+  compileOnly "com.android.tools.lint:lint-checks:$versions.lint"
 
-    testImplementation "com.android.tools.lint:lint-tests:$versions.lint"
-    testImplementation "junit:junit:4.12"
-    testImplementation "org.assertj:assertj-core:3.9.0"
+  testImplementation "com.android.tools.lint:lint-tests:$versions.lint"
+  testImplementation "junit:junit:4.12"
+  testImplementation "org.assertj:assertj-core:3.9.0"
+
+  // 👇 添加 AutoService 支持（Kotlin 需要 kapt）
+  implementation 'com.google.auto.service:auto-service-annotations:1.1.1'
+  kapt 'com.google.auto.service:auto-service:1.1.1'
 }
 
 lintOptions {
-    htmlReport = true
-    htmlOutput = file("lint-report.html")
-    textReport = true
-    absolutePaths = false
-    ignoreTestSources = true
+  htmlReport = true
+  htmlOutput = file("lint-report.html")
+  textReport = true
+  absolutePaths = false
+  ignoreTestSources = true
 }
 
-jar {
-    manifest {
-        attributes("Lint-Registry-v2": "com.lyft.android.lint.checks.IssueRegistry")
-    }
-}
+// jar {
+//   manifest {
+//     attributes("Lint-Registry-v2": "com.lyft.android.lint.checks.IssueRegistry")
+//   }
+// }
